@@ -15,6 +15,7 @@ defmodule DockerizingPhoenix.Umbrella.MixProject do
             dockerizing_phoenix: :permanent,
             dockerizing_phoenix_web: :permanent
           ],
+          runtime_config_path: "config/runtime.exs",
         ]
       ]
     ]
