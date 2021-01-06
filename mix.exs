@@ -7,7 +7,16 @@ defmodule DockerizingPhoenix.Umbrella.MixProject do
       version: "0.1.0",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
-      aliases: aliases()
+      aliases: aliases(),
+      releases: [
+        standard: [
+          version: "0.0.1",
+          applications: [
+            dockerizing_phoenix: :permanent,
+            dockerizing_phoenix_web: :permanent
+          ],
+        ]
+      ]
     ]
   end
 
