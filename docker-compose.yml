@@ -16,10 +16,14 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        PORT: 4000
     environment:
       DATABASE_URL: ${DATABASE_URL}
       SECRET_KEY_BASE: ${SECRET_KEY_BASE}
+      PORT: 4000
+      HOST: localhost
     ports:
-      - 4001:4001
+      - 4000
     depends_on:
       - db

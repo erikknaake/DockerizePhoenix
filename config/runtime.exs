@@ -17,5 +17,19 @@ secret_key_base =
     You can generate one by calling: mix phx.gen.secret
     """
 
-config :dockerizing_phoenix_web, DockerizingPhoenixWeb.Endpoint,
-       secret_key_base: secret_key_base
+host = System.get_env("HOST") || "localhost"
+port = String.to_integer(System.get_env("PORT") || "4000")
+
+
+config :dockerizing_phoenix_web,
+       DockerizingPhoenixWeb.Endpoint,
+       url: [
+         host: host
+       ],
+       secret_key_base: secret_key_base,
+       http: [
+         port: port,
+         transport_options: [
+           socket_opts: [:inet6]
+         ]
+       ]

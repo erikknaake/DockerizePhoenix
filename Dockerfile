@@ -38,15 +38,16 @@ RUN mix phx.digest
 
 # build release
 COPY rel ./rel
-RUN PORT=4001 mix release standard
+RUN mix release standard
 
 # prepare release image
 FROM alpine:3.9 AS app
 # install runtime dependencies
 RUN apk add --update openssl postgresql-client
 
-EXPOSE 4001
+ARG PORT
+EXPOSE $PORT
 # copy release to app container
 COPY --from=build /dockerizing_phoenix_umbrella/_build/prod/rel/standard/ .
-
-CMD ["sh", "/bin/standard", "start"]
+COPY entrypoint.sh ./entrypoint.sh
+CMD ["sh", "./entrypoint.sh"]
