@@ -4,7 +4,7 @@ use Mix.Config
 config :dockerizing_phoenix, DockerizingPhoenix.Repo,
   username: "postgres",
   password: "postgres",
-  database: "dockerizing_phoenix_dev",
+  database: "dockerizing_phoenix",
   hostname: "localhost",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10

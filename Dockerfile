@@ -47,6 +47,7 @@ RUN apk add --update openssl postgresql-client
 
 ARG PORT
 EXPOSE $PORT
+ENV MIX_ENV=prod
 # copy release to app container
 COPY --from=build /dockerizing_phoenix_umbrella/_build/prod/rel/standard/ .
 COPY entrypoint.sh ./entrypoint.sh
